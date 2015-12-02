@@ -1,6 +1,5 @@
 package Game;
 
-import Player.Player;
 import java.util.*;
 
 /**
@@ -10,24 +9,14 @@ public class Game {
     //attribute
     public Board Board;
     private int numPlayer;
-    public Player[] arrOfPlayer;
 
     // ctor
     public Game(int _numPlayer){
         Board = new Board();
         numPlayer = _numPlayer;
-        arrOfPlayer = new Player[numPlayer];
     }
 
     // method
-    public void setNumPLayer(int _numPlayer){
-        numPlayer = _numPlayer;
-    }
-
-    public int getNumPlayer(){
-        return numPlayer;
-    }
-
     public boolean isValidMove(int x, int y){
         boolean success = false;
         if((x<0||x>19) || (y<0||y>19)){
@@ -217,18 +206,18 @@ public class Game {
         return diagonalRight;
     }
 
-    public int setPiece(int axis, int ordinate, int piece) {
-        Board.gameBoard[axis][ordinate] = piece;
+    public int setPiece(int axis, int ordinate, int playerID) {
+        Board.gameBoard[axis][ordinate] = playerID;
         if(isVertical(axis, ordinate))
-            return piece;
+            return playerID;
         else if(isHorizontal(axis, ordinate))
-            return piece;
+            return playerID;
         else if(isDiagonalRight(axis, ordinate))
-            return piece;
+            return playerID;
         else if(isDiagonalLeft(axis, ordinate))
-            return piece;
+            return playerID;
         else
-            return -99;
+            return 0;
     }
 
     public boolean isFull(Board B){
