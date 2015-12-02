@@ -42,10 +42,6 @@ public class Game {
         }
     }
 
-    public void setPiece(int axis, int ordinate, int piece){
-            Board.gameBoard[axis][ordinate] = piece;
-    }
-
     public boolean isHorizontal(int row, int column){
         boolean same=true, horizontal=true;
         int count=1, tempRow=row, tempColumn=column;
@@ -219,6 +215,20 @@ public class Game {
             diagonalRight = false;
 
         return diagonalRight;
+    }
+
+    public int setPiece(int axis, int ordinate, int piece) {
+        Board.gameBoard[axis][ordinate] = piece;
+        if(isVertical(axis, ordinate))
+            return piece;
+        else if(isHorizontal(axis, ordinate))
+            return piece;
+        else if(isDiagonalRight(axis, ordinate))
+            return piece;
+        else if(isDiagonalLeft(axis, ordinate))
+            return piece;
+        else
+            return -99;
     }
 
     public boolean isFull(Board B){
