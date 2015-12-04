@@ -34,12 +34,11 @@ public class Game {
     public boolean isHorizontal(int row, int column){
         boolean same=true, horizontal=true;
         int count=1, tempRow=row, tempColumn=column;
-        while(!same){
-            if(column!=19){
-                if (Board.gameBoard[row][column] == Board.gameBoard[row][column + 1]) {
+        while(same){
+            if(column<19){
+                if (Board.gameBoard[row][column] == Board.gameBoard[row][column+1]) {
                     column++;
                     count++;
-                    tempColumn++;
                 } else {
                     same=false;
                 }
@@ -51,10 +50,9 @@ public class Game {
         if (count >= 5) {
             return horizontal;
         } else {
-            count = 1;
-            while(same) {
-                if(tempColumn!=0){
-                    if (Board.gameBoard[tempRow][tempColumn] == Board.gameBoard[tempRow][tempColumn - 1]) {
+            while(same && count<5) {
+                if(tempColumn>0){
+                    if (Board.gameBoard[tempRow][tempColumn] == Board.gameBoard[tempRow][tempColumn-1]) {
                         tempColumn--;
                         count++;
                     } else {
@@ -63,9 +61,9 @@ public class Game {
                 } else{
                     same=false;
                 }
-
             }
         }
+
         if (count>=5)
             horizontal = true;
         else
@@ -76,12 +74,11 @@ public class Game {
     public boolean isVertical(int row, int column){
         boolean same=true, vertical=true;
         int count=1, tempRow=row, tempColumn=column;
-        while(!same){
-            if(row!=19){
+        while(same){
+            if(row<19){
                 if (Board.gameBoard[row][column] == Board.gameBoard[row+1][column]) {
                     row++;
                     count++;
-                    tempRow++;
                 } else {
                     same = false;
                 }
@@ -94,9 +91,8 @@ public class Game {
         if (count>=5){
             return vertical;
         } else{
-            count = 1;
-            while(same){
-                if(tempRow!=0){
+            while(same && count<5){
+                if(tempRow>0){
                     if (Board.gameBoard[tempRow][tempColumn] == Board.gameBoard[tempRow-1][tempColumn]) {
                         tempRow--;
                         count++;
@@ -119,14 +115,12 @@ public class Game {
     public boolean isDiagonalLeft(int row, int column){
         boolean same=true, diagonalLeft=true;
         int count=1, tempRow=row, tempColumn=column;
-        while(!same){
-            if(row!=19 && column!=0){
+        while(same){
+            if(row<19 && column>0){
                 if (Board.gameBoard[row][column] == Board.gameBoard[row+1][column-1]) {
                     row++;
                     column--;
                     count++;
-                    tempRow++;
-                    tempColumn--;
                 } else {
                     same = false;
                 }
@@ -138,8 +132,7 @@ public class Game {
         if (count>=5){
             return diagonalLeft;
         } else{
-            count = 1;
-            while(same){
+            while(same && count<5){
                 if(tempRow!=0 && tempColumn!=19){
                     if (Board.gameBoard[tempRow][tempColumn] == Board.gameBoard[tempRow-1][tempColumn+1]) {
                         tempRow--;
@@ -164,14 +157,12 @@ public class Game {
     public boolean isDiagonalRight(int row, int column) {
         boolean same=true, diagonalRight=true;
         int count=1, tempRow=row, tempColumn=column;
-        while(!same){
-            if(row!=19 && column!=19){
+        while(same){
+            if(row<19 && column<19){
                 if (Board.gameBoard[row][column] == Board.gameBoard[row+1][column+1]) {
                     row++;
                     column++;
                     count++;
-                    tempRow++;
-                    tempColumn++;
                 } else {
                     same = false;
                 }
@@ -183,9 +174,8 @@ public class Game {
         if (count>=5){
             return diagonalRight;
         } else{
-            count = 1;
-            while(same){
-                if(tempRow!=0 && tempColumn!=0){
+            while(same && count<5){
+                if(tempRow>0 && tempColumn>0){
                     if (Board.gameBoard[tempRow][tempColumn] == Board.gameBoard[tempRow-1][tempColumn-1]) {
                         tempRow--;
                         tempColumn--;
@@ -220,11 +210,11 @@ public class Game {
             return 0;
     }
 
-    public boolean isFull(Board B){
+    public boolean isFull(){
         boolean full = true;
-        for(int i=0; i<B.getDimension(); i++){
-            for(int j=0; j<B.getDimension(); j++){
-                if(B.gameBoard[i][j] == -1)
+        for(int i=0; i<Board.getDimension(); i++){
+            for(int j=0; j<Board.getDimension(); j++){
+                if(Board.gameBoard[i][j] == -1)
                     full = false;
             }
         }

@@ -12,7 +12,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         numPlayer = in.nextInt();
         Game playGame = new Game(numPlayer);
-        while(playerWin==0){
+        while(playerWin==0 && !playGame.isFull()){
             do{
                 System.out.print("Masukkan player ID anda : ");
                 playerID = in.nextInt();
