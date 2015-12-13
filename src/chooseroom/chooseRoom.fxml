@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chooseroom.ChooseRoomController">
+    <stylesheets>
+        <URL value="@chooseroom.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutY="-3.0" prefHeight="400.0" prefWidth="591.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="createRoomTab" text="                               Create Room                               ">
+               <content>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="369.0" prefWidth="595.0">
+                           <children>
+                              <TextField fx:id="roomNameFXML" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="39.0" prefWidth="555.0" promptText="Room Name" />
+                              <Button fx:id="createRoom" layoutX="247.0" layoutY="87.0" mnemonicParsing="false" onMouseReleased="#saveRoomName" prefHeight="49.0" prefWidth="102.0" text="Create Room" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </FlowPane>
+               </content>
+            </Tab>
+          <Tab fx:id="chooseRoomTab" text="                              Choose Room                              ">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="571.0">
+                          <columns>
+                            <TableColumn fx:id="rName" prefWidth="142.0" text="Room Name" />
+                            <TableColumn fx:id="rMaster" minWidth="0.0" prefWidth="140.0" text="Room Master" />
+                              <TableColumn fx:id="numPlayers" prefWidth="145.0" text="#Players" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
