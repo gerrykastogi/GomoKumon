@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gomokumon.InRoomController">
+    <stylesheets>
+        <URL value="@inroom.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="338.0" prefWidth="579.0">
+        <columns>
+          <TableColumn fx:id="playersList" prefWidth="578.0" text="Players List" />
+        </columns>
+      </TableView>
+      <Button fx:id="startGame" layoutX="487.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#goToBoard" text="Start Game" />
+      <Button fx:id="back" layoutX="34.0" layoutY="361.0" mnemonicParsing="false" onMouseReleased="#backToChooseRoom" text="Back" />
+   </children>
+</AnchorPane>
