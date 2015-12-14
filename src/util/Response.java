@@ -160,10 +160,16 @@ public class Response {
                             // Notification about game already ended
                             } else if (type.equals("end")){
                                 System.out.println("++ Game ended ++");
+                                
+                            } 
+//                            Notification about removed player
+                            else if (type.equals("remove")){
+                                System.out.println("Removing player with id : " + new JSONObject(jo.getString("data")).getInt("id"));
+                                gomokumon.FXMLDocumentController.playerDisconnect(new JSONObject(jo.getString("data")).getInt("id"));
                             }
                         }
                     } catch (Exception e){
-//                        System.out.println(e);
+                        System.out.println(e);
                         error = true;
 //                        System.out.println("ADA ERROR");
                     }

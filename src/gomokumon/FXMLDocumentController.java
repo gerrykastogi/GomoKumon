@@ -982,11 +982,11 @@ public class FXMLDocumentController implements Initializable {
             if (players.get(i).getFirst() == gomokumon.Gomokumon.playerId){
                 //data.add("You");
                 data.add(players.get(i).getSecond() + "< YOU >");
-                dummydata.add(i);
+                dummydata.add(players.get(i).getFirst());
             }
             else{
                 data.add(players.get(i).getSecond());
-                dummydata.add(i);
+                dummydata.add(players.get(i).getFirst());
             }
         }
         
@@ -1124,18 +1124,40 @@ public class FXMLDocumentController implements Initializable {
         myId = player_id;
     }
     
-    private static void playerDisconnect(int player_id){
+    public static void playerDisconnect(int player_id){
 //        for (String dat: data){
 //            if ((Integer)data.getFirst() == player_id){
 //                players.remove(player);
 //            }
 //        }
-        for (int i = 0;i<data.size();i++){
-            if (dummydata.get(i) == player_id ){
-                data.remove(i);
-                dummydata.remove(i);
+        
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //if you change the UI, do it here !
+//                System.out.println("Inside Player Disconnect");
+//                for (int i = 0;i<data.size();i++){
+//                    if (dummydata.get(i) == player_id ){
+//                        System.out.println("Remove Succeed : " + player_id);
+//                        data.remove(i);
+//                        dummydata.remove(i);
+//                    }
+//                }
+                
+                Stage stage; 
+                Parent root = null;
+                stage=(Stage) _winnerStatus.getScene().getWindow();
+                try {
+                    root = FXMLLoader.load(getClass().getResource("chooseRoom.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
             }
-        }
+        });
     }
     
     public static void setWinner(int player_id, String player_name){

@@ -21,7 +21,7 @@ public class Request {
 
     static {
         try {
-            socket = new Socket("localhost", 3002);
+            socket = new Socket("192.168.137.176", 3002);
             os = new DataOutputStream(socket.getOutputStream());
         } catch (UnknownHostException e) {
             System.err.println(e);
